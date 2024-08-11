@@ -4,8 +4,7 @@
 
 #pragma once
 
-namespace dsa {
+#include <cstdint>
+#include <cstdlib>
 
-int ret_one();
-
-}
+#include "array.hpp"

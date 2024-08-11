@@ -4,10 +4,4 @@
 
 #include "dsa.hpp"
 
-#include <cstdio>
-
-namespace dsa {
-
-int ret_one() { return 1; }
-
-}  // namespace dsa
+namespace DSA {}  // namespace DSA

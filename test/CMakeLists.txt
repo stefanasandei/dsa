@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 23)
 
 enable_testing()
 
-add_executable(dsa_tests base.cpp)
+add_executable(dsa_tests array.cpp)
 
 target_link_libraries(dsa_tests external lib)
 target_include_directories(dsa_tests PRIVATE ../lib)
