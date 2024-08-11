@@ -30,6 +30,8 @@ class Array {
   [[nodiscard]] constexpr const T& operator[](size_t index) const noexcept;
   [[nodiscard]] constexpr T& operator[](size_t index) noexcept;
 
+  constexpr void Fill(const T& value) noexcept;
+
  private:
   T m_Data[S];
 };
@@ -91,6 +93,13 @@ inline constexpr T& Array<T, S>::operator[](size_t index) noexcept {
   // static_assert(index < S);
 
   return m_Data[index];
+}
+
+template <typename T, size_t S>
+constexpr void Array<T, S>::Fill(const T& value) noexcept {
+  for (size_t i = 0; i < S; i++) {
+    m_Data[i] = value;
+  }
 }
 
 }  // namespace DSA

@@ -24,7 +24,7 @@ TEST_F(ArrayTest, RandomAccess) {
   EXPECT_EQ(arr_[0], 1);
 }
 
-TEST_F(ArrayTest, Fill) {
+TEST_F(ArrayTest, ReadData) {
   EXPECT_EQ(arr1_.GetSize(), 15);
 
   char targetValue = 'e';
@@ -46,5 +46,15 @@ TEST_F(ArrayTest, CanBeCopied) {
 
   for (int i = 0; i < arr2_.GetSize(); i++) {
     EXPECT_EQ(arr2_[i], i);
+  }
+}
+
+TEST_F(ArrayTest, Fill) {
+  int32_t targetValue = 420;
+
+  arr_.Fill(targetValue);
+
+  for (int i = 0; i < arr_.GetSize(); i++) {
+    EXPECT_EQ(arr_[i], targetValue);
   }
 }
