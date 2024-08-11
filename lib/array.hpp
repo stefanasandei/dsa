@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include <array>
+
 namespace DSA {
 
 /* -------- declaration -------- */
@@ -11,8 +13,14 @@ namespace DSA {
 template <typename T, size_t S>
 class Array {
  public:
-  Array() = default;
-  ~Array() = default;
+  constexpr Array() = default;
+  constexpr ~Array() = default;
+
+  constexpr Array(const Array& other) noexcept;
+  constexpr Array& operator=(const Array& other) noexcept;
+
+  constexpr Array(Array&& other) noexcept;
+  constexpr Array& operator=(Array&& other) noexcept;
 
   [[nodiscard]] constexpr size_t GetSize() const noexcept;
 
@@ -27,6 +35,34 @@ class Array {
 };
 
 /* -------- implementation -------- */
+
+template <typename T, size_t S>
+inline constexpr Array<T, S>::Array(const Array& other) noexcept {
+  for (size_t i = 0; i < S; i++) {
+    m_Data[i] = other[i];
+  }
+}
+
+template <typename T, size_t S>
+inline constexpr Array<T, S>& Array<T, S>::operator=(
+    const Array& other) noexcept {
+  if (this == &other) {
+    return *this;
+  }
+
+  for (size_t i = 0; i < S; i++) {
+    m_Data[i] = other[i];
+  }
+
+  return *this;
+}
+
+template <typename T, size_t S>
+inline constexpr Array<T, S>::Array([[maybe_unused]] Array&& other) noexcept {}
+
+template <typename T, size_t S>
+inline constexpr Array<T, S>& Array<T, S>::operator=(
+    [[maybe_unused]] Array&& other) noexcept {}
 
 template <typename T, size_t S>
 inline constexpr size_t Array<T, S>::GetSize() const noexcept {
@@ -45,14 +81,14 @@ inline constexpr const T* Array<T, S>::GetData() const noexcept {
 
 template <typename T, size_t S>
 inline constexpr const T& Array<T, S>::operator[](size_t index) const noexcept {
-  static_assert(index < S);
+  // static_assert(index < S);
 
   return m_Data[index];
 }
 
 template <typename T, size_t S>
 inline constexpr T& Array<T, S>::operator[](size_t index) noexcept {
-  static_assert(index < S);
+  // static_assert(index < S);
 
   return m_Data[index];
 }

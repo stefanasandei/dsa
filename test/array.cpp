@@ -12,6 +12,7 @@ class ArrayTest : public testing::Test {
 
   DSA::Array<int32_t, 5> arr_{};
   DSA::Array<char, 15> arr1_{};
+  DSA::Array<int32_t, 5> arr2_{};
 };
 
 TEST_F(ArrayTest, SizeDefined) { EXPECT_EQ(arr_.GetSize(), 5); }
@@ -31,5 +32,19 @@ TEST_F(ArrayTest, Fill) {
 
   for (size_t i = 0; i < arr1_.GetSize(); i++) {
     EXPECT_EQ(arr1_[i], targetValue);
+  }
+}
+
+TEST_F(ArrayTest, CanBeCopied) {
+  for (int i = 0; i < arr_.GetSize(); i++) {
+    arr_[i] = i;
+  }
+
+  arr2_ = arr_;
+
+  EXPECT_EQ(arr2_.GetSize(), arr_.GetSize());
+
+  for (int i = 0; i < arr2_.GetSize(); i++) {
+    EXPECT_EQ(arr2_[i], i);
   }
 }
