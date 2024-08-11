@@ -4,8 +4,6 @@
 
 #pragma once
 
-#include <array>
-
 namespace DSA {
 
 /* -------- declaration -------- */
@@ -96,7 +94,7 @@ inline constexpr T& Array<T, S>::operator[](size_t index) noexcept {
 }
 
 template <typename T, size_t S>
-constexpr void Array<T, S>::Fill(const T& value) noexcept {
+inline constexpr void Array<T, S>::Fill(const T& value) noexcept {
   for (size_t i = 0; i < S; i++) {
     m_Data[i] = value;
   }
