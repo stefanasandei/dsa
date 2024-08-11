@@ -6,6 +6,6 @@
 
 namespace dsa {
 
-    void hello();
+void hello();
 
 }
