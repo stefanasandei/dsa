@@ -6,6 +6,6 @@
 
 namespace dsa {
 
-void hello();
+int ret_one();
 
 }

@@ -8,6 +8,6 @@
 
 namespace dsa {
 
-void hello() { printf("hello world\n"); }
+int ret_one() { return 1; }
 
 }  // namespace dsa
