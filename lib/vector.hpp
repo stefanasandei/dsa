@@ -5,7 +5,6 @@
 #pragma once
 
 #include <cmath>
-#include <vector>
 
 namespace DSA {
 
@@ -24,6 +23,7 @@ class Vector {
   constexpr Vector& operator=(Vector&& other) noexcept;
 
   [[nodiscard]] constexpr size_t GetSize() const noexcept;
+  [[nodiscard]] constexpr size_t GetCapacity() const noexcept;
   [[nodiscard]] constexpr bool IsEmpty() const noexcept;
 
   [[nodiscard]] constexpr T* GetData() noexcept;
@@ -33,7 +33,6 @@ class Vector {
   [[nodiscard]] constexpr T& operator[](size_t index) noexcept;
 
   constexpr void Resize(size_t newCapacity) noexcept;
-  constexpr void Reserve(size_t newCap) noexcept;
   constexpr void Clear() noexcept;
 
   constexpr void PushBack(const T& value) noexcept;
@@ -127,6 +126,11 @@ inline constexpr size_t Vector<T>::GetSize() const noexcept {
 }
 
 template <typename T>
+inline constexpr size_t Vector<T>::GetCapacity() const noexcept {
+  return m_Capacity;
+}
+
+template <typename T>
 inline constexpr bool Vector<T>::IsEmpty() const noexcept {
   return m_Size == 0;
 }
@@ -143,19 +147,22 @@ inline constexpr const T* Vector<T>::GetData() const noexcept {
 
 template <typename T>
 inline constexpr const T& Vector<T>::operator[](size_t index) const noexcept {
-  // if (index >= m_Size) return 0;
-  //  todo: better error handling in the future
+  ASSERT(index < m_Size);
 
   return m_Data[index];
 }
 
 template <typename T>
 inline constexpr T& Vector<T>::operator[](size_t index) noexcept {
+  ASSERT(index < m_Size);
+  
   return m_Data[index];
 }
 
 template <typename T>
 inline constexpr void Vector<T>::Resize(size_t newCapacity) noexcept {
+  if (newCapacity <= m_Capacity) return;
+
   m_Capacity = newCapacity;
 
   T* newData = new T[newCapacity];
@@ -175,13 +182,6 @@ inline constexpr void Vector<T>::PushBack(const T& value) noexcept {
   }
 
   m_Data[m_Size++] = value;
-}
-
-template <typename T>
-inline constexpr void Vector<T>::Reserve(size_t newCap) noexcept {
-  if (newCap <= m_Capacity) return;
-
-  Resize(newCap);
 }
 
 template <typename T>

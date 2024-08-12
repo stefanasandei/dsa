@@ -4,6 +4,8 @@
 
 #pragma once
 
+#include "base.hpp"
+
 namespace DSA {
 
 /* -------- declaration -------- */
@@ -81,14 +83,14 @@ inline constexpr const T* Array<T, S>::GetData() const noexcept {
 
 template <typename T, size_t S>
 inline constexpr const T& Array<T, S>::operator[](size_t index) const noexcept {
-  // static_assert(index < S);
+  ASSERT(index < S);
 
   return m_Data[index];
 }
 
 template <typename T, size_t S>
 inline constexpr T& Array<T, S>::operator[](size_t index) noexcept {
-  // static_assert(index < S);
+  ASSERT(index < S);
 
   return m_Data[index];
 }

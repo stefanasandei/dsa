@@ -8,6 +8,7 @@ file(GLOB_RECURSE DSA_SOURCES ${PROJECT_SOURCE_DIR}/*.cpp)
 
 add_library(lib STATIC ${DSA_HEADERS} ${DSA_SOURCES}
         array.hpp
-        vector.hpp)
+        vector.hpp
+        base.hpp)
 
 include_directories(.)

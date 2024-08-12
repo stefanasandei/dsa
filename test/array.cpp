@@ -33,6 +33,9 @@ TEST_F(ArrayTest, ReadData) {
   for (size_t i = 0; i < arr1_.GetSize(); i++) {
     EXPECT_EQ(arr1_[i], targetValue);
   }
+
+  EXPECT_EXIT((void)arr1_[arr1_.GetSize() + 1], testing::ExitedWithCode(255),
+              "Assert failed");
 }
 
 TEST_F(ArrayTest, CanBeCopied) {

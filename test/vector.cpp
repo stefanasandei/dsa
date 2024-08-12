@@ -72,3 +72,15 @@ TEST_F(VectorTest, ElementInsertion) {
   EXPECT_EQ(v_.GetSize(), 0);
   EXPECT_EQ(v_.IsEmpty(), true);
 }
+
+TEST_F(VectorTest, Resizing) {
+  EXPECT_EQ(v_.GetSize(), 0);
+
+  size_t targetSize = 2049;
+  for (size_t i = 0; i < targetSize; i++) {
+    v_.PushBack(static_cast<int32_t>(i));
+  }
+
+  EXPECT_EQ(v_.GetSize(), targetSize);
+  EXPECT_EQ(v_.GetCapacity(), (targetSize - 1) * 2);
+}
