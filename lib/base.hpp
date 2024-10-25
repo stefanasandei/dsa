@@ -5,6 +5,7 @@
 #pragma once
 
 #include <cstdio>
+#include <cstdint>
 
 namespace DSA {
 

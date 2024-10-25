@@ -34,7 +34,7 @@ TEST_F(ArrayTest, ReadData) {
     EXPECT_EQ(arr1_[i], targetValue);
   }
 
-  EXPECT_EXIT((void)arr1_[arr1_.GetSize() + 1], testing::ExitedWithCode(255),
+  EXPECT_EXIT((void)arr1_[arr1_.GetSize() + 1], testing::ExitedWithCode(-1),
               "Assert failed");
 }
 
