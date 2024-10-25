@@ -40,12 +40,12 @@ class BigInteger {
   [[nodiscard]] constexpr BigInteger operator+(const BigInteger& other) const;
   [[nodiscard]] constexpr BigInteger operator-(const BigInteger& other) const;
   [[nodiscard]] constexpr BigInteger operator*(const BigInteger& other) const;
-  //  [[nodiscard]] constexpr BigInteger operator/(const BigInteger& other) const;
+  // [[nodiscard]] constexpr BigInteger operator/(const BigInteger& other) const;
 
-  //   constexpr void operator+=(const BigInteger& other);
-  //   constexpr void operator-=(const BigInteger& other);
+  // constexpr void operator+=(const BigInteger& other);
+  // constexpr void operator-=(const BigInteger& other);
   // constexpr void operator*=(const BigInteger& other);
-  //   constexpr void operator/=(const BigInteger& other);
+  // constexpr void operator/=(const BigInteger& other);
 
   // comparison operators
   [[nodiscard]] constexpr std::strong_ordering operator<=>(const BigInteger& other) const;
